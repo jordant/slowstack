@@ -17,7 +17,7 @@ ENABLED_SERVICES=key,cinder,c-sch,c-api,c-vol,rabbit,mysql
 " > /tmp/localrc
 sudo mv /tmp/localrc /vagrant/devstack/
 
-cd /vagrant/devstack && ./stack.sh
+cd /vagrant/devstack && ./stack.sh || exit
 
 
 source /vagrant/devstack/openrc admin admin
