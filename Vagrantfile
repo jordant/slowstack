@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
       os.username = "#{ENV['OS_USERNAME']}"
       os.api_key = "#{ENV['OS_PASSWORD']}"
       os.tenant   = "#{ENV['OS_TENANT_NAME']}"
-      os.flavor       = "100"                # Regex or String
+      os.flavor       = "400"                # Regex or String
       os.image        = "#{ENV['OS_IMAGE_ID']}"
       os.endpoint     = "#{ENV['OS_AUTH_URL']}/tokens"
       os.keypair_name = "bootstrap"
