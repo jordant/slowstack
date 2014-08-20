@@ -14,7 +14,8 @@ RABBIT_PASSWORD=secrete
 SERVICE_PASSWORD=secrete
 SERVICE_TOKEN=secrete
 ENABLED_SERVICES=key,cinder,c-sch,c-api,c-vol,rabbit,mysql
-" > /vagrant/devstack/localrc
+" > /tmp/localrc
+sudo mv /tmp/localrc /vagrant/devstack/
 
 cd /vagrant/devstack && ./stack.sh
 
