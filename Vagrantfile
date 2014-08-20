@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
       os.api_key = "#{ENV['OS_PASSWORD']}"
       os.tenant   = "#{ENV['OS_TENANT_NAME']}"
       os.flavor       = "100"                # Regex or String
-      os.image        = "#{ENV['OS_IMAGE_ID=']}"
+      os.image        = "#{ENV['OS_IMAGE_ID']}"
       os.endpoint     = "#{ENV['OS_AUTH_URL']}/tokens"
       os.keypair_name = "bootstrap"
       os.ssh_username = "dhc-user"    
