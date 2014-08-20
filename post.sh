@@ -13,7 +13,7 @@ MYSQL_PASSWORD=secrete
 RABBIT_PASSWORD=secrete
 SERVICE_PASSWORD=secrete
 SERVICE_TOKEN=secrete
-ENABLED_SERVICES=key,cinder,c-sch,c-api,c-vol,rabbit,mysql
+#ENABLED_SERVICES=key,cinder,c-sch,c-api,c-vol,rabbit,mysql
 " > /tmp/localrc
 sudo mv /tmp/localrc /vagrant/devstack/
 
