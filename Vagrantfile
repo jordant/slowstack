@@ -2,7 +2,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "openstack"
   config.ssh.private_key_path = "~/.ssh/bootstrap"
   config.vm.provider :openstack do |os|
-      os.server_name = "slowstack-#{$BUILD_TAG}"
+      os.server_name = "slowstack-#{ENV['BUILD_TAG']}"
       os.username = "#{ENV['OS_USERNAME']}"
       os.api_key = "#{ENV['OS_PASSWORD']}"
       os.tenant   = "#{ENV['OS_TENANT_NAME']}"
