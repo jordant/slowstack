@@ -1,4 +1,3 @@
-Vagrant.require_plugin "vagrant-openstack-plugin"
 Vagrant.configure("2") do |config|
   config.vm.box = "openstack"
   config.ssh.private_key_path = "~/.ssh/bootstrap"
