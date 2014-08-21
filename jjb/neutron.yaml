@@ -1,0 +1,29 @@
+- job:
+    name: 'slowstack-neutron'
+    disabled: false
+    description: |
+      Slowstack neutron
+    scm:
+        - internal-git-merged-persistent:
+            git-repo-name: openstack/neutron
+
+    logrotate:
+      daysToKeep: 7
+      numToKeep: 100
+      artifactDaysToKeep: -1
+      artifactNumToKeep: 100
+
+    parameters:
+      - gerrit-params
+
+    builders:
+      - shell: |
+          #!/bin/bash
+          rm -rf slowstack
+          git clone git@github.com:jordant/slowstack.git slowstack
+          cd slowstack
+          git clone git@github.com:openstack-dev/devstack.git
+          . ~/.novarc 
+          vagrant destroy --force
+          VAGRANT_LOG=debug vagrant up --provider=openstack
+          vagrant destroy --force

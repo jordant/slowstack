@@ -1,0 +1,145 @@
+- parameter:
+    name: gerrit-params
+
+    parameters:
+      - string:
+          name: GERRIT_REFSPEC
+          default: ''
+          description: |
+              This parameter is here to allow manual builds of the
+              package from the Jenkins UI
+              (https://wiki.jenkins-ci.org/display/JENKINS/Gerrit+Trigger).
+      - string:
+          name: GERRIT_BRANCH
+          default: master
+          description: |
+              This parameter is here to allow manual builds of the
+              package from the Jenkins UI
+              (https://wiki.jenkins-ci.org/display/JENKINS/Gerrit+Trigger).
+
+
+- scm:
+    name: internal-git-merged
+    scm:
+      - git:
+          refspec: $GERRIT_REFSPEC
+          url: "ssh://metricstack@review.openstack.org:29418/{git-repo-name}"
+          choosing-strategy: gerrit
+          branches:
+            - '$GERRIT_BRANCH'
+
+
+- scm:
+    name: internal-git-merged-persistent
+    scm:
+      - git:
+          refspec: $GERRIT_REFSPEC
+          url: "ssh://metricstack@review.openstack.org:29418/{git-repo-name}"
+          choosing-strategy: gerrit
+          wipe-workspace: false
+          branches:
+            - '$GERRIT_BRANCH'
+
+
+- scm:
+    name: internal-git-check
+    scm:
+      - git:
+          refspec: $GERRIT_REFSPEC
+          url: "ssh://metricstack@review.openstack.org:29418/{git-repo-name}"
+          choosing-strategy: gerrit
+          branches:
+            - '$GERRIT_REFSPEC'
+
+
+- scm:
+    name: github
+    scm:
+      - git:
+          url: "git@github.com:{github-owner}/{github-project}.git"
+          branches:
+            - '{branch}'
+          browser: githubweb
+          browser-url: "https://github.com/{github-owner}/{github-project}/"
+
+# Watch for patches to be posted to our internal gerrit server.
+- trigger:
+    name: internal-patch-posted
+    triggers:
+      - gerrit:
+          trigger-on-patchset-uploaded-event: true
+          trigger-on-draft-published-event: true
+          projects:
+            - project-pattern: '{git-repo-name}'
+              project-compare-type: PLAIN
+              branches:
+                - branch-compare-type: ANT
+                  branch-pattern: "**"
+
+# Watch for patches to merge into a branch in our internal gerrit
+# server.
+- trigger:
+    name: internal-patch-merged
+    triggers:
+      - gerrit:
+          trigger-on-change-merged-event: true
+          projects:
+            - project-pattern: '{git-repo-name}'
+              project-compare-type: PLAIN
+              branches:
+                - branch-compare-type: ANT
+                  branch-pattern: "**"
+
+- trigger:
+    name: packaging-script-change-merged
+    triggers:
+      - gerrit:
+          trigger-on-change-merged-event: true
+          projects:
+            - project-pattern: dhc/jenkins
+              project-compare-type: PLAIN
+              branches:
+                - branch-compare-type: ANT
+                  branch-pattern: "master"
+              file-paths:
+                - pattern: "{file-paths-pattern}"
+                  compare-type: ANT
+
+
+# Run a job at the "beginning" of the day, taking into account the
+# team in the Eastern time zone, but expressing the time in Pacific,
+# because that's how the server is configured.
+- trigger:
+    name: start-of-day
+    triggers:
+      - timed: "H 5 * * *"
+
+
+# Run a job once a day
+- trigger:
+    name: daily
+    triggers:
+      - timed: "@daily"
+
+
+# Run a job once each hour
+- trigger:
+    name: hourly
+    triggers:
+      - timed: "@hourly"
+
+
+# Poll the SCM system at the "beginning" of the day, taking into
+# account the team in the Eastern time zone, but expressing the time
+# in Pacific, because that's how the server is configured.
+- trigger:
+    name: poll-start-of-day
+    triggers:
+      - pollscm: "H 5 * * *"
+
+
+# Poll the SCM system hourly.
+- trigger:
+    name: poll-hourly
+    triggers:
+      - pollscm: "H * * * *"
