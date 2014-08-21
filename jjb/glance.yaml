@@ -1,15 +1,15 @@
 - job:
-    name: 'slowstack-$i'
+    name: 'slowstack-glance'
     disabled: false
     workspace: jobs/$BUILD_TAG
     description: |
-      Slowstack $i
+      Slowstack glance
     scm:
         - internal-git-merged-persistent:
-            git-repo-name: openstack/$i
+            git-repo-name: openstack/glance
     triggers:
         - internal-patch-posted:
-             git-repo-name: openstack/$i
+             git-repo-name: openstack/glance
 
     logrotate:
       daysToKeep: 7

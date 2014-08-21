@@ -1,15 +1,15 @@
 - job:
-    name: 'slowstack-$i'
+    name: 'slowstack-cinder'
     disabled: false
     workspace: jobs/$BUILD_TAG
     description: |
-      Slowstack $i
+      Slowstack cinder
     scm:
         - internal-git-merged-persistent:
-            git-repo-name: openstack/$i
+            git-repo-name: openstack/cinder
     triggers:
         - internal-patch-posted:
-             git-repo-name: openstack/$i
+             git-repo-name: openstack/cinder
 
     logrotate:
       daysToKeep: 7
