@@ -62,7 +62,6 @@
           browser: githubweb
           browser-url: "https://github.com/{github-owner}/{github-project}/"
 
-# Watch for patches to be posted to our internal gerrit server.
 - trigger:
     name: internal-patch-posted
     triggers:
@@ -76,8 +75,6 @@
                 - branch-compare-type: 'ANT'
                   branch-pattern: "**"
 
-# Watch for patches to merge into a branch in our internal gerrit
-# server.
 - trigger:
     name: internal-patch-merged
     triggers:
@@ -96,14 +93,12 @@
       - timed: "H 5 * * *"
 
 
-# Run a job once a day
 - trigger:
     name: daily
     triggers:
       - timed: "@daily"
 
 
-# Run a job once each hour
 - trigger:
     name: hourly
     triggers:
