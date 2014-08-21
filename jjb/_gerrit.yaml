@@ -71,9 +71,9 @@
           trigger-on-draft-published-event: true
           projects:
             - project-pattern: '{git-repo-name}'
-              project-compare-type: PLAIN
+              project-compare-type: 'ANT'
               branches:
-                - branch-compare-type: ANT
+                - branch-compare-type: 'ANT'
                   branch-pattern: "**"
 
 # Watch for patches to merge into a branch in our internal gerrit
@@ -85,30 +85,11 @@
           trigger-on-change-merged-event: true
           projects:
             - project-pattern: '{git-repo-name}'
-              project-compare-type: PLAIN
+              project-compare-type: 'ANT'
               branches:
-                - branch-compare-type: ANT
+                - branch-compare-type: 'ANT'
                   branch-pattern: "**"
 
-- trigger:
-    name: packaging-script-change-merged
-    triggers:
-      - gerrit:
-          trigger-on-change-merged-event: true
-          projects:
-            - project-pattern: dhc/jenkins
-              project-compare-type: PLAIN
-              branches:
-                - branch-compare-type: ANT
-                  branch-pattern: "master"
-              file-paths:
-                - pattern: "{file-paths-pattern}"
-                  compare-type: ANT
-
-
-# Run a job at the "beginning" of the day, taking into account the
-# team in the Eastern time zone, but expressing the time in Pacific,
-# because that's how the server is configured.
 - trigger:
     name: start-of-day
     triggers:
@@ -128,17 +109,12 @@
     triggers:
       - timed: "@hourly"
 
-
-# Poll the SCM system at the "beginning" of the day, taking into
-# account the team in the Eastern time zone, but expressing the time
-# in Pacific, because that's how the server is configured.
 - trigger:
     name: poll-start-of-day
     triggers:
       - pollscm: "H 5 * * *"
 
 
-# Poll the SCM system hourly.
 - trigger:
     name: poll-hourly
     triggers:

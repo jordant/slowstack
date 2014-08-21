@@ -1,15 +1,15 @@
 - job:
-    name: 'slowstack-neutron'
+    name: 'slowstack-keystone'
     disabled: false
     workspace: jobs/$BUILD_TAG
     description: |
-      Slowstack neutron
+      Slowstack keystone
     scm:
         - internal-git-merged-persistent:
-            git-repo-name: openstack/neutron
+            git-repo-name: openstack/keystone
     triggers:
         - internal-patch-posted:
-             git-repo-name: openstack/neutron
+             git-repo-name: openstack/keystone
 
     logrotate:
       daysToKeep: 7

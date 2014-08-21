@@ -1,0 +1,13 @@
+- builder:
+    name: slowstack-run
+    builders:
+      - shell: |
+          #!/bin/bash
+          rm -rf slowstack
+          git clone git@github.com:jordant/slowstack.git
+          cd slowstack
+          git clone git@github.com:openstack-dev/devstack.git
+          . ~/.novarc
+          vagrant destroy --force
+          VAGRANT_LOG=debug vagrant up --provider=openstack
+          vagrant destroy --force
