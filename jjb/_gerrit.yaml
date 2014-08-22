@@ -66,6 +66,7 @@
     name: internal-patch-posted
     triggers:
       - gerrit:
+          silent: true
           trigger-on-patchset-uploaded-event: true
           trigger-on-draft-published-event: true
           projects:
@@ -79,6 +80,7 @@
     name: internal-patch-merged
     triggers:
       - gerrit:
+          silent: true
           trigger-on-change-merged-event: true
           projects:
             - project-pattern: '{git-repo-name}'
