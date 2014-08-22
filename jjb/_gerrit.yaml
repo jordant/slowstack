@@ -74,7 +74,7 @@
               project-compare-type: 'ANT'
               branches:
                 - branch-compare-type: 'ANT'
-                  branch-pattern: "**"
+                  branch-pattern: 'master'
 
 - trigger:
     name: internal-patch-merged
@@ -87,7 +87,7 @@
               project-compare-type: 'ANT'
               branches:
                 - branch-compare-type: 'ANT'
-                  branch-pattern: "**"
+                  branch-pattern: 'master'
 
 - trigger:
     name: start-of-day
