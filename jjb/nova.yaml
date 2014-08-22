@@ -1,6 +1,7 @@
 - job:
     name: 'slowstack-nova'
     disabled: false
+    concurrent: true
     workspace: jobs/$BUILD_TAG
     description: |
       Slowstack nova

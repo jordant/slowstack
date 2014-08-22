@@ -1,6 +1,7 @@
 - job:
     name: 'slowstack-neutron'
     disabled: false
+    concurrent: true
     workspace: jobs/$BUILD_TAG
     description: |
       Slowstack neutron

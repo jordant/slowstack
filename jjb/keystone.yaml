@@ -2,6 +2,7 @@
     name: 'slowstack-keystone'
     disabled: false
     workspace: jobs/$BUILD_TAG
+    concurrent: true
     description: |
       Slowstack keystone
     scm:
