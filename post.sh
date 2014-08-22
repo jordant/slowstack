@@ -17,8 +17,4 @@ SERVICE_TOKEN=secrete
 " > /tmp/localrc
 sudo mv /tmp/localrc /vagrant/devstack/
 
-cd /vagrant/devstack && ./stack.sh || exit
-
-
-source /vagrant/devstack/openrc admin admin
-cinder list
+cd /vagrant/devstack && ./stack.sh || exit 1

@@ -9,5 +9,5 @@
           git clone git@github.com:openstack-dev/devstack.git
           . ~/.novarc
           vagrant destroy --force
-          VAGRANT_LOG=debug vagrant up --provider=openstack
+          VAGRANT_LOG=debug vagrant up --provider=openstack || exit 1
           vagrant destroy --force
