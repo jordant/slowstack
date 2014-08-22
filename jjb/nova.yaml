@@ -5,11 +5,8 @@
     workspace: jobs/$BUILD_TAG
     description: |
       Slowstack nova
-    scm:
-        - internal-git-merged-persistent:
-            git-repo-name: openstack/nova
     triggers:
-        - internal-patch-posted:
+        - internal-patch-merged:
              git-repo-name: openstack/nova
 
     logrotate:

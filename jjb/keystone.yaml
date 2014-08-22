@@ -5,11 +5,8 @@
     concurrent: true
     description: |
       Slowstack keystone
-    scm:
-        - internal-git-merged-persistent:
-            git-repo-name: openstack/keystone
     triggers:
-        - internal-patch-posted:
+        - internal-patch-merged:
              git-repo-name: openstack/keystone
 
     logrotate:
