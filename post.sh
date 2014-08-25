@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # setup apt proxy
-cat > /etc/apt/apt.conf.d/01proxy << EOF
+cat > /tmp/01proxy << EOF
 Acquire::http::Proxy "http://10.10.10.152:3142";
 EOF
+
+sudo cp /tmp/01proxy /etc/apt/apt.conf.d/
 
 echo "ADMIN_PASSWORD=secrete
 MYSQL_PASSWORD=secrete
