@@ -1,12 +1,9 @@
 #!/bin/bash
-echo "deb http://mirrors.dreamcompute.com/debian wheezy main
-deb http://mirrors.dreamcompute.com/security.debian.org/ wheezy/updates main
-deb http://mirrors.dreamcompute.com/debian wheezy-updates main " > /tmp/sources.list
-sudo cp /tmp/sources.list /etc/apt/
 
-echo "deb http://mirrors.dreamcompute.com/debian wheezy-backports main" > /tmp/wheezy_backports.list
-sudo cp /tmp/wheezy_backports.list /etc/apt/sources.list.d/
-
+# setup apt proxy
+cat > /etc/apt/apt.conf.d/01proxy << EOF
+Acquire::http::Proxy "http://10.10.10.152:3142";
+EOF
 
 echo "ADMIN_PASSWORD=secrete
 MYSQL_PASSWORD=secrete
