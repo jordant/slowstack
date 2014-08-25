@@ -5,7 +5,7 @@ deb http://mirrors.dreamcompute.com/debian wheezy-updates main " > /tmp/sources.
 sudo cp /tmp/sources.list /etc/apt/
 
 echo "deb http://mirrors.dreamcompute.com/debian wheezy-backports main" > /tmp/wheezy_backports.list
-sudo cp /tmp/wheezy_backports.list /etc/apt/
+sudo cp /tmp/wheezy_backports.list /etc/apt/sources.list.d/
 
 
 echo "ADMIN_PASSWORD=secrete

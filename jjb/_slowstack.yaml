@@ -3,6 +3,7 @@
     builders:
       - shell: |
           #!/bin/bash
+          export VAGRANT_DEFAULT_PROVIDER=openstack
           rm -rf slowstack
           git clone git@github.com:jordant/slowstack.git
           cd slowstack
