@@ -2,7 +2,7 @@
 
 # setup apt proxy
 cat > /tmp/01proxy << EOF
-Acquire::http::Proxy "http://10.10.10.152:3142";
+Acquire::http::Proxy "http://10.10.10.246:3142";
 EOF
 
 sudo cp /tmp/01proxy /etc/apt/apt.conf.d/
