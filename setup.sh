@@ -24,7 +24,7 @@ include_path=.:scripts:~/git/
 
 [jenkins]
 user=slowstack
-password=pVu1VA1OvxsC
+password=secrete
 url=https://localhost
 EOF
 
